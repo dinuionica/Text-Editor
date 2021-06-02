@@ -243,3 +243,32 @@ void __split(RopeNode **left_rn, RopeNode **right_rn, int idx) {
     (*left_rn)->weight = total_weight((*left_rn)->left);
 }
 
+RopeTree *insert(RopeTree *rt, int idx, const char *str) {
+    /* TODO(Dinu Ion Irinel) */
+    /* impartirea stringu-ului initial in functie de index */
+    SplitPair pair = split(rt, idx);
+    RopeTree *new_rp = makeRopeTree(pair.left);
+    /* concatenare cu prima jumatate a string-ului care a fost impartit */
+    new_rp->root = concat_nodes(new_rp->root, makeRopeNode(str));
+    /* concatenarea cu cea de-a doua parte a string-ului */
+    new_rp->root = concat_nodes(new_rp->root, pair.right);
+
+    return new_rp;
+}
+
+RopeTree *delete (RopeTree *rt, int start, int len) {
+    /* TODO(Serban Bianca-Sanziana) */
+    /* impartirea sirului in functie de index-ul start */
+    SplitPair pair1 = split(rt, start);
+    /* creare noului rope cu partea dreapta obtinuta
+     * si impartirea pe baza index-ului len
+     */
+    RopeTree *new_rp = makeRopeTree(pair1.right);
+    SplitPair pair2 = split(new_rp, len);
+
+    /* concatenarea primului string obținut la prima impartire si
+     * al doilea string obtinut la cea de-a doua impartire
+     */
+    new_rp->root = concat_nodes(pair1.left, pair2.right);
+    return new_rp;
+}

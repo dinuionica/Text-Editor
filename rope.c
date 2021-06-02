@@ -138,6 +138,48 @@ RopeNode *concat_nodes(RopeNode *rt1, RopeNode *rt2) {
     return rt3;
 }
 
+/* functii folosite pentru returnarea unui caracter de pe o pozitie dorita */
+char indexRope(RopeTree *rt, int idx) {
+    /* TODO(Serban Bianca-Sanziana) */
+    return __indexRope(rt->root, idx);
+}
+
+char __indexRope(RopeNode *node, int idx) {
+    if (node->weight <= idx && node->right != NULL) {
+        /* parcurgere subarbore drept */
+        return __indexRope(node->right, idx - node->weight);
+    }
+    if (node->left != NULL) {
+        /* parcurgere subarbore stang */
+        return __indexRope(node->left, idx);
+    }
+    /* returnarea caracterului de pe pozitia dorita */
+    return node->str[idx];
+}
+
+/* functie pentru cautarea unui string cuprins intr-un interval stabilit */
+char *search(RopeTree *rt, int start, int end) {
+    /* TODO(Serban Bianca-Sanziana) */
+
+    int pos = start;
+    /* alocare memorie pentru string-ul rezultat */
+    char *str = malloc((end - start + 1) * sizeof(char));
+    DIE(str == NULL, "Allocation error string\n");
+
+    /* initializare cu terminator de sir */
+    str[0] = '\0';
+    /* cat timp intervalul este valid accesam un caracter
+     * si il adaugam la string-ul rezultat
+     */
+    while (start <= pos && pos < end) {
+        char character = indexRope(rt, pos);
+        /* copierea caracterului in string-ul dorit */
+        strncat(str, &character, 1);
+        pos++;
+    }
+    return str;
+}
+
 
 /* functii folosite pentru a imparti un rop in doua rope-uri separate */
 SplitPair split(RopeTree *rt, int idx) {

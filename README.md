@@ -83,4 +83,4 @@ I created a new rope with the right side obtained after the split,
 I applied a new split according to len, and at the end I concatenated the first one
 string obtained with the second and I returned the rope
 
-We used the macro for memory allocation errors DIE taken from the utils.h header
+We used the macro for memory allocation errors  DIE taken from the utils.h header

@@ -1,5 +1,5 @@
 
-## Simulation of text-editor using Rope Data Structer<br />
+## Simulation of text-editor using Rope Data Structure<br />
 
 This project is a simulation of a text editor that allows you to add text, delete, concatenate, search 
 and return a character within a word. At the base of the implementation is a rope, a tree-based data

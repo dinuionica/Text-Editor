@@ -7,24 +7,10 @@ structure that is used in practice to store very long strings.
 
 For download this project:
 ```
-https://github.com/dinuionica/Image-Editor.git
+https://github.com/dinuionica/Text-Editor.git
 ```
-F:<br />
+For test you can use de checker :<br />
 ```
-LOAD input/image.pgm
-SELECT 0 0 500 500
-CROP
-ROTATE 90
-SAVE new_image.pgm ASCII
-```
-For download this project:
-```
-https://github.com/dinuionica/Image-Editor.git
-```
-
-On Linux:
-
-```
-$ make
+./checker
 ```
 

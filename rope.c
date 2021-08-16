@@ -237,12 +237,12 @@ void __split(RopeNode **left_rn, RopeNode **right_rn, int idx) {
     if ((*left_rn)->left != NULL && (*left_rn)->weight > idx) {
         __split(&(*left_rn)->left, right_rn, idx);
     }
-    /* apelare functie pentru fiul drept */
+    /* call function for right son  */
     if ((*left_rn)->right != NULL) {
         __split(&(*left_rn)->right, right_rn, idx - (*left_rn)->weight);
     }
 
-    /* actualizarea noii greutati */
+    /* update the new weight */
     (*left_rn)->weight = total_weight((*left_rn)->left);
 }
 
